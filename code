@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educational Website for Students</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        input[type="text"] {
+            margin-top: 10px;
+            padding: 5px;
+            width: 80%;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .collapsible {
+            background: white;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .collapsible-header {
+            padding: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .collapsible-content {
+            padding: 10px;
+            display: none;
+        }
+
+        .arrow {
+            transition: transform 0.2s;
+        }
+
+        .collapsible-content.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Student Dashboard</h1>
+        <input type="text" id="search" placeholder="Search...">
+    </header>
+    <main>
+        <section class="collapsible">
+            <h2 class="collapsible-header">User Dashboard <span class="arrow">▼</span></h2>
+            <div class="collapsible-content">
+                <p>Overview of academic status and starred updates.</p>
+            </div>
+        </section>
+        <section class="collapsible">
+            <h2 class="collapsible-header">Course Management <span class="arrow">▼</span></h2>
+            <div class="collapsible-content">
+                <h3>Current Courses</h3>
+                <p>List of active courses.</p>
+                <h3>Complete Courses</h3>
+                <p>Archived courses with grades.</p>
+                <h3>Pending Courses</h3>
+                <p>Upcoming courses with enrollment details.</p>
+            </div>
+        </section>
+        <section class="collapsible">
+            <h2 class="collapsible-header">Examination Resources <span class="arrow">▼</span></h2>
+            <div class="collapsible-content">
+                <p>Download hall tickets and view exam cities.</p>
+            </div>
+        </section>
+        <section class="collapsible">
+            <h2 class="collapsible-header">Academic Calendar <span class="arrow">▼</span></h2>
+            <div class="collapsible-content">
+                <p>Important dates and schedules.</p>
+            </div>
+        </section>
+        <section class="collapsible">
+            <h2 class="collapsible-header">Certificates and Documents <span class="arrow">▼</span></h2>
+            <div class="collapsible-content">
+                <p>Download certificates and manage submitted documents.</p>
+            </div>
+        </section>
+        <section class="collapsible">
+            <h2 class="collapsible-header">Payments and Transactions <span class="arrow">▼</span></h2>
+            <div class="collapsible-content">
+                <p>View transaction history and make payments.</p>
+            </div>
+        </section>
+        <section class="collapsible">
+            <h2 class="collapsible-header">Support and Queries <span class="arrow">▼</span></h2>
+            <div class="collapsible-content">
+                <p>FAQ and contact support.</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Educational Website</p>
+    </footer>
+    <script>
+        document.querySelectorAll('.collapsible-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                content.classList.toggle('show');
+                const arrow = header.querySelector('.arrow');
+                arrow.style.transform = content.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        });
+
+        document.getElementById('search').addEventListener('input', function() {
+            const filter = this.value.toLowerCase();
+            const sections = document.querySelectorAll('section.collapsible');
+            sections.forEach(section => {
+                const header = section.querySelector('.collapsible-header').innerText.toLowerCase();
+                section.style.display = header.includes(filter) ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>
